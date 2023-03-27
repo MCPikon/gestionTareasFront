@@ -16,7 +16,7 @@ export class NuevaTareaComponent implements OnInit {
 
   titulo = '';
   descripcion:string = null;
-  estado:Estado = null;
+  estado:Estado = Estado.Pendiente;
   fechaCreacion:Date = new Date();
   fechaLimite:Date = null;
 

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Tarea } from 'src/app/models/tarea';
+import { TareaService } from 'src/app/services/tarea.service';
 
 @Component({
   selector: 'app-editar-tarea',
@@ -7,9 +11,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarTareaComponent implements OnInit {
 
-  constructor() { }
+  tarea:Tarea = null;
+
+  constructor(
+    private tareaService: TareaService,
+    private activateRoute: ActivatedRoute,
+    private toastr: ToastrService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    const id = this.activateRoute.snapshot.params['id'];
+    this.tareaService.getTareaById(id).subscribe({
+      next: (response) => {
+        this.tarea = response;
+      },
+      error: (err) => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000,  positionClass: 'toast-top-center',
+        });
+        this.router.navigate(['/']);
+      }
+    });
+  }
+
+  onUpdate() {
+    this.tareaService.updateTarea(this.tarea).subscribe({
+      next: (response) => {
+        this.toastr.success("Tarea Actualizada", 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.router.navigate(['/lista']);
+      }, 
+      error: (err) => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000,  positionClass: 'toast-top-center',
+        });
+      }
+    });
   }
 
 }

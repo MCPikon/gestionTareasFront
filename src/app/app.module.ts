@@ -14,7 +14,6 @@ import { IndexComponent } from './index/index.component';
 import { ListaTareaComponent } from './tarea/lista-tarea/lista-tarea.component';
 import { NuevaTareaComponent } from './tarea/nueva-tarea/nueva-tarea.component';
 import { EditarTareaComponent } from './tarea/editar-tarea/editar-tarea.component';
-import { DetallesTareaComponent } from './tarea/detalles-tarea/detalles-tarea.component';
 import { interceptorProvider } from './interceptors/prod-interceptor.service';
 import { DatePipe } from '@angular/common';
 
@@ -27,8 +26,7 @@ import { DatePipe } from '@angular/common';
     IndexComponent,
     ListaTareaComponent,
     NuevaTareaComponent,
-    EditarTareaComponent,
-    DetallesTareaComponent
+    EditarTareaComponent
   ],
   imports: [
     BrowserModule,

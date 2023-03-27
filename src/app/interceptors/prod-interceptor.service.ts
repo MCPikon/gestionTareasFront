@@ -39,9 +39,9 @@ export class ProdInterceptorService implements HttpInterceptor {
         }));
       } else if (err.status === 403) {
         this.tokenService.logOut();
-        return throwError(err);
+        return throwError(() => err);
       } else {
-        return throwError(err);
+        return throwError(() => err);
       }
     }));
   }

@@ -29,21 +29,21 @@ export class SignupComponent implements OnInit {
 
   onSignUp(): void {
     this.nuevoUsuario = new NuevoUsuario(this.nombre, this.email, this.password);
-    this.authService.nuevo(this.nuevoUsuario).subscribe(
-      data => {
+    this.authService.nuevo(this.nuevoUsuario).subscribe({
+      next: (response) => {
         this.toastr.success('Cuenta Creada', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         
         this.router.navigate(["/login"]);
       },
-      err => {
+      error: (err) => {
         this.errMsg = err.error.mensaje;
         this.toastr.error(this.errMsg, 'Fail', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
       }
-    );
+    });
   }
 
 }

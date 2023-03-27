@@ -28,20 +28,20 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     this.loginUsuario = new LoginUsuario(this.email, this.password);
-    this.authService.login(this.loginUsuario).subscribe(
-      data => {
+    this.authService.login(this.loginUsuario).subscribe({
+      next: (response) => {
         this.toastr.success('Sesión Iniciada', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        this.tokenService.setToken(data.token);
+        this.tokenService.setToken(response.token);
         this.router.navigate(["/"]);
       },
-      err => {
+      error: (err) => {
         this.errMsg = err.error.mensaje;
         this.toastr.error(this.errMsg, 'Fail', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
       }
-    );
+    });
   }
 }

@@ -25,4 +25,12 @@ export class TareaService {
   public deleteTarea(idTarea: number): Observable<any> {
     return this.http.delete<any>(this.tareaURL + `deleteTarea/${idTarea}`);
   }
+
+  public getTareaById(idTarea: number): Observable<Tarea> {
+    return this.http.get<Tarea>(this.tareaURL + `findById/${idTarea}`);
+  }
+
+  public updateTarea(tarea: Tarea): Observable<any> {
+    return this.http.put<any>(this.tareaURL + 'updateTarea', tarea);
+  }
 }
