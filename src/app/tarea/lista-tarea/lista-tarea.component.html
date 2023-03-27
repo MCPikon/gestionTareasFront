@@ -17,13 +17,15 @@
         <td>{{ tarea.titulo }}</td>
         <td *ngIf="tarea.descripcion != null; else descripcion_vacia">{{ tarea.descripcion }}</td>
         <ng-template #descripcion_vacia><td><em style="color:lightslategray">Sin Descripción</em></td></ng-template>
-        <td *ngIf="tarea.estado === 'Completada'; else tarea_pendiente">{{ tarea.estado }} <i class="fa-solid fa-check" style="color: #00940a;"></i></td>
-        <ng-template #tarea_pendiente><td>{{ tarea.estado }} <i class="fa-solid fa-pen" style="color: #b88700;"></i></td></ng-template>
+        <td class="text-success" *ngIf="tarea.estado === 'Completada'; else tarea_pendiente"><b>{{ tarea.estado }}</b>&nbsp;<i class="fa-solid fa-check" style="color: #00940a;"></i></td>
+        <ng-template #tarea_pendiente><td><b>{{ tarea.estado }}</b>&nbsp;<i class="fa-regular fa-clock" style="color: #383838;"></i></td></ng-template>
         <td>{{ tarea.fechaCreacion | date : "dd-MM-yyyy" }}</td>
         <td *ngIf="tarea.fechaLimite != null; else fecha_limite_vacio">
           {{ tarea.fechaLimite | date : "dd-MM-yyyy" }}
         </td>
         <ng-template #fecha_limite_vacio><td><em style="color:lightslategray">Sin fecha límite</em></td></ng-template>
+        <td *ngIf="tarea.estado === 'Pendiente'; else boton_completada"><button class="btn btn-success"><i class="fa-solid fa-check"></i> Marcar como Completada</button></td>
+        <ng-template #boton_completada><td><button class="btn btn-secondary"><i class="fa-regular fa-clock"></i> Marcar como Pendiente</button></td></ng-template>
         <td><button class="btn btn-warning" routerLink="/editar/{{tarea.id}}"><i class="far fa-edit"></i> Editar</button></td>
         <td><button type="button" class="btn btn-danger" (click)="borrar(tarea.id)">
           <i class="fa-solid fa-trash"></i> Borrar
