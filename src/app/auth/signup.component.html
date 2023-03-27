@@ -1,0 +1,65 @@
+<app-menu></app-menu>
+
+<div class="container d-flex justify-content-center">
+  <div class="card mt-4">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item m-2">
+          <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item m-2">
+          <a class="nav-link active" routerLink="/signup">Crear Cuenta</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onSignUp()" novalidate>
+        <div class="form-group">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input
+            type="text"
+            name="nombre"
+            id="nombre"
+            class="form-control"
+            placeholder="John Doe"
+            [(ngModel)]="nombre"
+            required
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="form-control"
+            placeholder="example@email.com"
+            [(ngModel)]="email"
+            required
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="password" class="form-label">Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="form-control"
+            placeholder="password"
+            [(ngModel)]="password"
+            required
+          />
+        </div>
+        <div class="form-group d-grid gap-2">
+          <button
+            class="btn btn-success mt-3"
+            [disabled]="!f.valid"
+            type="submit"
+          >
+          <i class="fa-solid fa-user-plus"></i> Crear Cuenta
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

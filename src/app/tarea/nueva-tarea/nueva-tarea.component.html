@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+<div class="container">
+    <div class="row mt-3">
+        <h1 class="display-3 text-center mb-4">Crear nueva Tarea</h1>
+        <div class="col-md-4 mx-auto">
+            <form (ngSubmit)="getUserAddTarea()" novalidate #f="ngForm">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Inserta el titulo" [(ngModel)]="titulo" required>
+                    <label for="titulo">Titulo</label>
+                  </div>
+                <div class="form-floating mt-3">
+                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Inserta la descripción" [(ngModel)]="descripcion" style="height: 100px"></textarea>
+                    <label for="descripcion">Descripción</label>
+                </div>
+                <div class="form-floating mt-3">
+                    <select class="form-select" id="estado" name="estado" [(ngModel)]="estado" required>
+                      <option value="Pendiente">Pendiente</option>
+                      <option value="Completada">Completada</option>
+                    </select>
+                    <label for="estado">Selecciona el estado de la tarea</label>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="fecha_limite">Fecha Límite</label>
+                    <input type="date" class="form-control" id="fecha_limite" name="fecha_limite" [(ngModel)]="fechaLimite">
+                </div>
+                <div class="btn-group d-flex mt-3">
+                    <button class="btn btn-outline-primary" routerLink="/lista">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Volver al listado</button>
+                    <button class="btn btn-outline-success" [disabled]="!f.valid">
+                        <i class="fas fa-plus-circle"></i> Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

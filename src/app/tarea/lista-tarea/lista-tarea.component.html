@@ -1,0 +1,52 @@
+<app-menu></app-menu>
+<div *ngIf="usuario" class="container">
+  <table class="table table-striped mt-2" *ngIf="tareas.length > 0; else vacio">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Fecha de Creación</th>
+        <th scope="col">Fecha Límite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tarea of tareas">
+        <td>{{ tarea.id }}</td>
+        <td>{{ tarea.titulo }}</td>
+        <td *ngIf="tarea.descripcion != null; else descripcion_vacia">{{ tarea.descripcion }}</td>
+        <ng-template #descripcion_vacia><td><em style="color:lightslategray">Sin Descripción</em></td></ng-template>
+        <td *ngIf="tarea.estado === 'Completada'; else tarea_pendiente">{{ tarea.estado }} <i class="fa-solid fa-check" style="color: #00940a;"></i></td>
+        <ng-template #tarea_pendiente><td>{{ tarea.estado }} <i class="fa-solid fa-pen" style="color: #b88700;"></i></td></ng-template>
+        <td>{{ tarea.fechaCreacion | date : "dd-MM-yyyy" }}</td>
+        <td *ngIf="tarea.fechaLimite != null; else fecha_limite_vacio">
+          {{ tarea.fechaLimite | date : "dd-MM-yyyy" }}
+        </td>
+        <ng-template #fecha_limite_vacio><td><em style="color:lightslategray">Sin fecha límite</em></td></ng-template>
+        <td><button type="button" class="btn btn-danger" (click)="borrar(tarea.id)">
+          <i class="fa-solid fa-trash"></i> Borrar Tarea
+        </button></td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #vacio>
+    <div class="m-3 text-center">
+      <h1 class="display-4">No tienes tareas creadas ahora mismo</h1>
+      <img
+        class="img-fluid m-3"
+        src="https://cdn-icons-png.flaticon.com/512/5058/5058432.png"
+        alt="img tareas vacio"
+        width="300px"
+      />
+      <h2 class="mt-4">Para crear tareas pulsa el botón de abajo</h2>
+      <button
+        class="btn btn-success btn-lg mt-2"
+        routerLink="/nuevo"
+        type="submit"
+      >
+        <i class="fa-solid fa-circle-plus"></i> Crear Tarea
+      </button>
+    </div>
+  </ng-template>
+</div>

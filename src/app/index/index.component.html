@@ -1,0 +1,15 @@
+<app-menu></app-menu>
+<div class="container">
+    <div class="m-2">
+        <div *ngIf="!email" class="text-center">
+            <h1 *ngIf="!email" class="display-4">Bienvenido a la página de Gestión de Tareas</h1>
+            <h3><a href="#" class="link-success" routerLink="/login">Inicia Sesión</a> o <a href="#" routerLink="/signup">Crea una Cuenta</a> para poder utilizar el Gestor de Tareas.</h3>
+            <img src="https://images.ctfassets.net/63bmaubptoky/PSQvd0V2h_8iNYwoQF5525u-ZpLZNUspHKeD8Wcj_dg/7f0480999d99e5b38cee121046956907/administrador-de-tarea-vs-gestor-de-proyectos.jpg" alt="imagen index (deslogeado)">
+        </div>
+        <div *ngIf="email && usuario" class="text-center">
+            <h1 *ngIf="email" class="display-4">Bienvenido, {{usuario.nombre}}</h1>
+            <h3>Puedes acceder a las opciones desde la barra superior.</h3>
+            <img class="img-fluid mt-4" src="https://images.ctfassets.net/rz1oowkt5gyp/1IgVe0tV9yDjWtp68dAZJq/36ca564d33306d407dabe39c33322dd9/TaskManagement-hero.png" alt="imagen index (logeado)">
+        </div>
+    </div>
+</div>

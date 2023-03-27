@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg sticky-top bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Gestión de Tareas <i class="fa-solid fa-list-check"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/"><i class="fa-solid fa-house"></i> Inicio</a>
+            </li>
+            <li class="nav-item" *ngIf="isLogged">
+                <a class="nav-link" routerLink="/lista"><i class="far fa-list-alt"></i> Lista de Tareas</a>
+            </li>
+            <li class="nav-item" *ngIf="isLogged">
+                <a class="nav-link" routerLink="/nuevo"><i class="fa-solid fa-plus"></i> Nueva Tarea</a>
+            </li>
+        </ul>
+        <form class="d-flex">
+            <button *ngIf="!isLogged" class="btn btn-outline-success my-2 my-sm-0" routerLink="/login" type="submit">
+                <i class="fas fa-sign-in-alt fa-fade"></i> Iniciar Sesión</button>
+            <button *ngIf="isLogged" class="btn btn-outline-danger my-2 my-sm-0" (click)="onLogOut()" type="reset">
+                <i class="fas fa-door-open"></i> Cerrar Sesión</button>
+        </form>
+      </div>
+    </div>
+  </nav>
