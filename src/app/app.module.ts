@@ -21,6 +21,8 @@ import { ListaTareaPendienteComponent } from './tarea/lista-tarea-pendiente/list
 import { ListaTareaFechaHoyComponent } from './tarea/lista-tarea-fecha-hoy/lista-tarea-fecha-hoy.component';
 import { ListaTareaFechaMesComponent } from './tarea/lista-tarea-fecha-mes/lista-tarea-fecha-mes.component';
 import { ListaTareaFechaSemanaComponent } from './tarea/lista-tarea-fecha-semana/lista-tarea-fecha-semana.component';
+import { ListaTareasAdminComponent } from './admin/lista-tareas-admin/lista-tareas-admin.component';
+import { ListaUsuariosAdminComponent } from './admin/lista-usuarios-admin/lista-usuarios-admin.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ListaTareaFechaSemanaComponent } from './tarea/lista-tarea-fecha-semana
     ListaTareaPendienteComponent,
     ListaTareaFechaHoyComponent,
     ListaTareaFechaMesComponent,
-    ListaTareaFechaSemanaComponent
+    ListaTareaFechaSemanaComponent,
+    ListaTareasAdminComponent,
+    ListaUsuariosAdminComponent
   ],
   imports: [
     BrowserModule,

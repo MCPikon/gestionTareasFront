@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+<div class="container">
+    <div *ngIf="usuarios.length > 0; else vacio">
+      <h1 class="display-4 text-center m-4">Todos los Usuarios <em class="text-warning">(Administración)</em></h1>
+      <table class="table table-bordered table-striped mt-2">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <th>{{ usuario.id }}</th>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #vacio>
+      <div class="m-3 text-center">
+        <h1 class="display-4">No hay usuarios creados ahora mismo</h1>
+        <img
+          class="img-fluid m-3"
+          src="https://cdn-icons-png.flaticon.com/512/5058/5058432.png"
+          alt="img tareas vacio"
+          width="300px"
+        />
+      </div>
+    </ng-template>
+</div>

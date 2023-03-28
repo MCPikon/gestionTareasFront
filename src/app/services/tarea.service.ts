@@ -14,6 +14,10 @@ export class TareaService {
 
   constructor(private http: HttpClient) { }
 
+  public getAll() {
+    return this.http.get<Tarea[]>(this.tareaURL + 'getAll');
+  }
+
   public getAllByUsuarioId(usuarioId: number) {
     return this.http.get<Tarea[]>(this.tareaURL + `getAllByUsuarioId/${usuarioId}`);
   }

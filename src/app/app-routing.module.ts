@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListaTareasAdminComponent } from './admin/lista-tareas-admin/lista-tareas-admin.component';
+import { ListaUsuariosAdminComponent } from './admin/lista-usuarios-admin/lista-usuarios-admin.component';
 import { LoginComponent } from './auth/login.component';
 import { SignupComponent } from './auth/signup.component';
 import { LoginGuard } from './guards/login.guard';
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path: 'lista-fecha-mes', component: ListaTareaFechaMesComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
   {path: 'nuevo', component: NuevaTareaComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
   {path: 'editar/:id', component: EditarTareaComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
+  {path: 'lista-tareas-admin', component: ListaTareasAdminComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin'] }},
+  {path: 'lista-usuarios-admin', component: ListaUsuariosAdminComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin'] }},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

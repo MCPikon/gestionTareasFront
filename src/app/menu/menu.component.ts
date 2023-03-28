@@ -11,6 +11,7 @@ import { UsuarioService } from '../services/usuario.service';
 export class MenuComponent implements OnInit {
 
   isLogged = false;
+  isAdmin = false;
 
   constructor(
     private tokenService: TokenService,
@@ -19,6 +20,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogged = this.tokenService.isLogged();
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   onLogOut(): void {

@@ -13,6 +13,10 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
+  public getAll(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.usuarioURL + 'getAll');
+  } 
+
   public getUsuarioByEmail(email: string): Observable<Usuario> {
     return this.http.get<Usuario>(this.usuarioURL + `getByEmail/${email}`);
   }

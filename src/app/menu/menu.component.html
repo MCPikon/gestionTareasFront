@@ -27,6 +27,15 @@
             <li class="nav-item" *ngIf="isLogged">
                 <a class="nav-link" routerLink="/nuevo"><i class="fa-solid fa-plus"></i> Nueva Tarea</a>
             </li>
+            <li class="nav-item dropdown" *ngIf="isAdmin">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-shield"></i> Menú de Administrador
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/lista-tareas-admin"><i class="fa-solid fa-list"></i> Todas las Tareas</a></li>
+                <li><a class="dropdown-item" routerLink="/lista-usuarios-admin"><i class="fa-solid fa-users"></i> Todos los Usuarios</a></li>
+              </ul>
+            </li>
         </ul>
         <form class="d-flex">
             <button *ngIf="!isLogged" class="btn btn-outline-success my-2 my-sm-0" routerLink="/login" type="submit">
