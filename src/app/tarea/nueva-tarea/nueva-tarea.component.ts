@@ -14,6 +14,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class NuevaTareaComponent implements OnInit {
 
+  // variables Tarea
   titulo = '';
   descripcion:string = null;
   estado:Estado = Estado.Pendiente;
@@ -33,6 +34,7 @@ export class NuevaTareaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // obtiene el usuario a través del email y crea la tarea
   getUserAddTarea(): void {
     this.usuarioService.getUsuarioByEmail(this.tokenService.getUserName()).subscribe({
       next: (response) => {

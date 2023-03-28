@@ -11,10 +11,12 @@ import { NuevoUsuario } from '../models/nuevo-usuario';
 })
 export class AuthService {
 
+  // URL Autenticación - Backend
   authURL = environment.authURL;
 
   constructor(private http: HttpClient) { }
 
+  // métodos POST
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any> {
     return this.http.post<any>(this.authURL + 'nuevo', nuevoUsuario);
   }

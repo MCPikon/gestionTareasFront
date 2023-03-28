@@ -1,32 +1,48 @@
 <nav class="navbar navbar-expand-lg sticky-top bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
+      
+      <!-- Titulo Navbar -->
       <a class="navbar-brand" href="#">Gestión de Tareas <i class="fa-solid fa-list-check"></i></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            
+            <!-- Item Inicio -->
             <li class="nav-item">
                 <a class="nav-link" routerLink="/"><i class="fa-solid fa-house"></i> Inicio</a>
             </li>
+            
+            <!-- Item Lista Tareas -->
             <li class="nav-item dropdown" *ngIf="isLogged">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="far fa-list-alt"></i> Lista de Tareas
               </a>
               <ul class="dropdown-menu">
+                <!-- Item Todas -->
                 <li><a class="dropdown-item" routerLink="/lista"><i class="fa-solid fa-list"></i> Todas</a></li>
                 <li><hr class="dropdown-divider"></li>
+
+                <!-- Items Por Estado -->
                 <li><a class="dropdown-item" routerLink="/lista-completadas"><i class="fa-solid fa-check"></i> Completadas</a></li>
                 <li><a class="dropdown-item" routerLink="/lista-pendientes"><i class="fa-regular fa-clock"></i> Pendientes</a></li>
+                
                 <li><hr class="dropdown-divider"></li>
+                
+                <!-- Items Por Fecha -->
                 <li><a class="dropdown-item" routerLink="/lista-fecha-hoy"><i class="fa-regular fa-calendar"></i> Para Hoy</a></li>
                 <li><a class="dropdown-item" routerLink="/lista-fecha-semana"><i class="fa-regular fa-calendar"></i> Próximos 7 días</a></li>
                 <li><a class="dropdown-item" routerLink="/lista-fecha-mes"><i class="fa-regular fa-calendar"></i> Próximos 30 días</a></li>
               </ul>
             </li>
+
+            <!-- Item Nueva Tarea -->
             <li class="nav-item" *ngIf="isLogged">
                 <a class="nav-link" routerLink="/nuevo"><i class="fa-solid fa-plus"></i> Nueva Tarea</a>
             </li>
+
+            <!-- Item Menú Admin -->
             <li class="nav-item dropdown" *ngIf="isAdmin">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-shield"></i> Menú de Administrador
@@ -37,6 +53,8 @@
               </ul>
             </li>
         </ul>
+
+        <!-- Botones de Login / LogOut -->
         <form class="d-flex">
             <button *ngIf="!isLogged" class="btn btn-outline-success my-2 my-sm-0" routerLink="/login" type="submit">
                 <i class="fas fa-sign-in-alt fa-fade"></i> Iniciar Sesión</button>

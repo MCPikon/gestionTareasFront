@@ -17,19 +17,25 @@ import { ListaTareaComponent } from './tarea/lista-tarea/lista-tarea.component';
 import { NuevaTareaComponent } from './tarea/nueva-tarea/nueva-tarea.component';
 
 const routes: Routes = [
+  // ruta por defecto
   {path: '', component: IndexComponent},
+  // rutas autenticación
   {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
   {path: 'signup', component: SignupComponent, canActivate: [LoginGuard]},
+  // rutas lista tareas
   {path: 'lista', component: ListaTareaComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
   {path: 'lista-completadas', component: ListaTareaCompletadaComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
   {path: 'lista-pendientes', component: ListaTareaPendienteComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
   {path: 'lista-fecha-hoy', component: ListaTareaFechaHoyComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
   {path: 'lista-fecha-semana', component: ListaTareaFechaSemanaComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
   {path: 'lista-fecha-mes', component: ListaTareaFechaMesComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
+  // rutas nueva / editar tarea
   {path: 'nuevo', component: NuevaTareaComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
   {path: 'editar/:id', component: EditarTareaComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }},
+  // rutas admin
   {path: 'lista-tareas-admin', component: ListaTareasAdminComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin'] }},
   {path: 'lista-usuarios-admin', component: ListaUsuariosAdminComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin'] }},
+  // ruta redirección
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

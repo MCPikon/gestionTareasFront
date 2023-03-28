@@ -10,9 +10,7 @@ export class TokenService {
 
   roles: Array<String> = [];
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router) { }
 
   public setToken(token:string): void {
     window.localStorage.removeItem(TOKEN_KEY);

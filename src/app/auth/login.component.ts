@@ -12,6 +12,7 @@ import { TokenService } from '../services/token.service';
 })
 export class LoginComponent implements OnInit {
 
+  // variables Usuario
   loginUsuario: LoginUsuario;
   email: string;
   password: string;
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  // método Inicio Sesión
   onLogin(): void {
     this.loginUsuario = new LoginUsuario(this.email, this.password);
     this.authService.login(this.loginUsuario).subscribe({

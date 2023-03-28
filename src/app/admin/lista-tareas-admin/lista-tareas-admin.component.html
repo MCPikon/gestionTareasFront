@@ -1,5 +1,7 @@
 <app-menu></app-menu>
 <div class="container">
+
+    <!-- Lista Tareas -->
     <div *ngIf="tareas.length > 0; else vacio">
       <h1 class="display-4 text-center m-4">Todas las Tareas <em class="text-warning">(Administración)</em></h1>
       <table class="table table-bordered table-striped mt-2">
@@ -18,11 +20,19 @@
           <tr *ngFor="let tarea of tareas">
             <th>{{ tarea.id }}</th>
             <td>{{ tarea.titulo }}</td>
+
+            <!-- Descripción -->
             <td *ngIf="tarea.descripcion != null; else descripcion_vacia">{{ tarea.descripcion }}</td>
             <ng-template #descripcion_vacia><td><em style="color:lightslategray">Sin Descripción</em></td></ng-template>
+
+            <!-- Estado -->
             <td class="text-success" *ngIf="tarea.estado === 'Completada'; else tarea_pendiente"><b>{{ tarea.estado }}</b>&nbsp;<i class="fa-solid fa-check" style="color: #00940a;"></i></td>
             <ng-template #tarea_pendiente><td><b>{{ tarea.estado }}</b>&nbsp;<i class="fa-regular fa-clock" style="color: #383838;"></i></td></ng-template>
+
+            <!-- Fecha Creación (con Pipe para que se muestre correctamente) -->
             <td>{{ tarea.fechaCreacion | date : "dd-MM-yyyy" }}</td>
+
+            <!-- Fecha Límite (con Pipe para que se muestre correctamente) -->
             <td *ngIf="tarea.fechaLimite != null; else fecha_limite_vacio">
               {{ tarea.fechaLimite | date : "dd-MM-yyyy" }}
             </td>
@@ -32,6 +42,8 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Lista Vacía -->
     <ng-template #vacio>
       <div class="m-3 text-center">
         <h1 class="display-4">No hay tareas creadas ahora mismo</h1>

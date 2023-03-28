@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NuevoUsuario } from '../models/nuevo-usuario';
 import { AuthService } from '../services/auth.service';
-import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,13 +11,13 @@ import { TokenService } from '../services/token.service';
 })
 export class SignupComponent implements OnInit {
 
+  // variables Usuario
   nuevoUsuario: NuevoUsuario;
   nombre: string;
   email: string;
   password: string;
 
   constructor(
-    private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
     private toastr: ToastrService
@@ -26,6 +25,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  // método Registro Usuario
   onSignUp(): void {
     this.nuevoUsuario = new NuevoUsuario(this.nombre, this.email, this.password);
     this.authService.nuevo(this.nuevoUsuario).subscribe({

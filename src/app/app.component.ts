@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   year: number;
 
   ngOnInit() {
+    // fecha a mostrar en el footer del componente html
     this.year = new Date().getFullYear();
   }
 }

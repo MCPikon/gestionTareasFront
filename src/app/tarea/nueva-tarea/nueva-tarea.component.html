@@ -1,8 +1,12 @@
 <app-menu></app-menu>
 <div class="container">
     <div class="row mt-3">
+
+        <!-- Título -->
         <h1 class="display-3 text-center mb-4">Crear nueva Tarea</h1>
         <div class="col-md-4 mx-auto">
+
+            <!-- Formulario -->
             <form (ngSubmit)="getUserAddTarea()" novalidate #f="ngForm">
                 <div class="form-floating">
                     <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Inserta el titulo" [(ngModel)]="titulo" required>
@@ -23,6 +27,8 @@
                     <label for="fecha_limite">Fecha Límite</label>
                     <input type="date" class="form-control" id="fecha_limite" name="fecha_limite" [(ngModel)]="fechaLimite">
                 </div>
+
+                <!-- Botones Volver / Crear -->
                 <div class="btn-group d-flex mt-3">
                     <button class="btn btn-outline-primary" routerLink="/lista">
                         <i class="fas fa-arrow-alt-circle-left"></i> Volver al listado</button>

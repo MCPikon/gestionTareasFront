@@ -3,17 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Estado, Tarea } from '../models/tarea';
-import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TareaService {
 
+  // URL Tareas - Backend
   tareaURL = environment.tareaURL;
 
   constructor(private http: HttpClient) { }
 
+  // métodos GET
   public getAll() {
     return this.http.get<Tarea[]>(this.tareaURL + 'getAll');
   }
@@ -38,10 +39,12 @@ export class TareaService {
     return this.http.get<Tarea[]>(this.tareaURL + `getAllByEstadoAndUsuarioId/${estado}/${usuarioId}`);
   }
 
+  // métodos POST
   public addTarea(tarea: Tarea): Observable<any> {
     return this.http.post<any>(this.tareaURL + 'addTarea', tarea);
   }
 
+  // métodos DELETE
   public deleteTarea(idTarea: number): Observable<any> {
     return this.http.delete<any>(this.tareaURL + `deleteTarea/${idTarea}`);
   }
@@ -50,6 +53,7 @@ export class TareaService {
     return this.http.get<Tarea>(this.tareaURL + `findById/${idTarea}`);
   }
 
+  // métodos PUT
   public updateTarea(tarea: Tarea): Observable<any> {
     return this.http.put<any>(this.tareaURL + 'updateTarea', tarea);
   }

@@ -14,6 +14,12 @@ export class ProdGuardService implements CanActivate {
     private router: Router
   ) { }
 
+  /**
+   * Si está logeado y isAdmin devuelve admin o user continua hacia la ruta, sino retorna a la ruta por defecto
+   * @param route Ruta componente
+   * @param state Ruta actual
+   * @returns boolean
+   */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const expectedRol = route.data['expectedRol'];
     this.realRol = this.tokenService.isAdmin() ? 'admin' : 'user';

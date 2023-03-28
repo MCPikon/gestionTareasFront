@@ -5,8 +5,10 @@ import { JwtDTO } from '../models/jwt-dto';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
 
-const AUTHORIZATION = 'Authorization';
-
+/**
+ * Esta clase se encarga de interceptar si el usuario esta logeado o no,
+ * de refrescar el token y también de añadirlo (si no lo tiene)
+ */
 @Injectable({
   providedIn: 'root'
 })

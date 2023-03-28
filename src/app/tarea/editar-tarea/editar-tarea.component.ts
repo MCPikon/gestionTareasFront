@@ -21,6 +21,7 @@ export class EditarTareaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // recoge la tarea con el id de la ruta
     const id = this.activateRoute.snapshot.params['id'];
     this.tareaService.getTareaById(id).subscribe({
       next: (response) => {

@@ -13,9 +13,16 @@ export class IndexComponent implements OnInit {
   usuario: Usuario = null;
   email: string;
 
-  constructor(private tokenService: TokenService, private usuarioService: UsuarioService) { }
+  constructor(
+    private tokenService: TokenService, 
+    private usuarioService: UsuarioService
+    ) { }
 
   ngOnInit(): void {
+    /** 
+     * Obtiene el usuario a través del email que devuelve 
+     * el tokenService para mostrar su nombre en el html del componente
+    */ 
     this.email = this.tokenService.getUserName();
     if (this.email != null) {
       this.usuarioService.getUsuarioByEmail(this.email).subscribe({

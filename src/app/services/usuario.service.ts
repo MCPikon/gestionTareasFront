@@ -9,10 +9,12 @@ import { Usuario } from '../models/usuario';
 })
 export class UsuarioService {
 
+  // URL Usuarios - Backend
   usuarioURL = environment.usuarioURL;
 
   constructor(private http: HttpClient) { }
 
+  // métodos GET
   public getAll(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.usuarioURL + 'getAll');
   } 

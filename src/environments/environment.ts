@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+
+  // Backend Controllers URLs
   authURL: 'http://localhost:8080/auth/',
   usuarioURL: 'http://localhost:8080/usuarios/',
   tareaURL: 'http://localhost:8080/tareas/'

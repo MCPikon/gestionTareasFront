@@ -1,27 +1,34 @@
 # GestionTareasFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+> Esta es solamente una parte del proyecto, la parte de Backend esta en el repositorio [GestionTareasBack](https://github.com/MCPikon/gestionTareasBack)
 
-## Development server
+Proyecto Final del Curso de Agrupo Sistemas que consiste en un Frontend hecho enteramente con Angular (version 13.1.2) con varias dependencias de npm.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Instalación
 
-## Code scaffolding
+```bash
+cd gestionTareasFront/
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Una vez instalado se ejecuta de la siguiente manera:
 
-## Build
+```bash
+ng serve
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Tecnologías
 
-## Running unit tests
+* Angular 13.1.2
+* ngx-toastr 14.3.0
+* @angular/animations 13.1.0
+* Bootstrap 5.3 (vía CDN)
+* font-awesome 6.3.0 (vía CDN)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Cómo funciona
 
-## Running end-to-end tests
+Este proyecto consta de diferentes partes:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* **Parte de seguridad** *(auth, guards, interceptors, auth-service y token-service)*: Se encargan de la parte de Inicio de Sesión/Registro comunicandose con la parte de Backend, y de interceptar las peticiones a rutas, aceptándolas o denegándolas dependendiendo de si el usuario esta Registrado y Logeado o tiene rol de Admin y/o Usuario.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* **Parte Web** *(demás componentes y servicios)*: Se encarga de la vista de la Web, así como de recibir y mandar peticiones al Backend y mostrar los registros obtenidos.

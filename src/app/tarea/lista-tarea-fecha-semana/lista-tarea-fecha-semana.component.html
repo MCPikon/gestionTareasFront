@@ -1,5 +1,7 @@
 <app-menu></app-menu>
 <div *ngIf="usuario" class="container">
+
+  <!-- Lista con Tareas -->
   <div *ngIf="tareas.length > 0; else vacio">
     <h1 class="display-4 text-center m-4">Tareas con fecha límite en los próximos 7 días</h1>
     <table class="table table-bordered table-striped mt-2">
@@ -16,15 +18,25 @@
       <tbody>
         <tr *ngFor="let tarea of tareas">
           <td>{{ tarea.titulo }}</td>
+
+          <!-- Descripción -->
           <td *ngIf="tarea.descripcion != null; else descripcion_vacia">{{ tarea.descripcion }}</td>
           <ng-template #descripcion_vacia><td><em style="color:lightslategray">Sin Descripción</em></td></ng-template>
+
+          <!-- Estado -->
           <td class="text-success" *ngIf="tarea.estado === 'Completada'; else tarea_pendiente"><b>{{ tarea.estado }}</b>&nbsp;<i class="fa-solid fa-check" style="color: #00940a;"></i></td>
           <ng-template #tarea_pendiente><td><b>{{ tarea.estado }}</b>&nbsp;<i class="fa-regular fa-clock" style="color: #383838;"></i></td></ng-template>
+
+          <!-- Fecha Creación (con Pipe para que se muestre correctamente) -->
           <td>{{ tarea.fechaCreacion | date : "dd-MM-yyyy" }}</td>
+
+          <!-- Fecha Límite (con Pipe para que se muestre correctamente) -->
           <td *ngIf="tarea.fechaLimite != null; else fecha_limite_vacio">
             {{ tarea.fechaLimite | date : "dd-MM-yyyy" }}
           </td>
           <ng-template #fecha_limite_vacio><td><em style="color:lightslategray">Sin fecha límite</em></td></ng-template>
+
+          <!-- Botones MarcarComo, Editar y Borrar -->
           <td *ngIf="tarea.estado === 'Pendiente'; else boton_completada"><button class="btn btn-success" (click)="marcarComoEstado(tarea.estado, tarea.id)"><i class="fa-solid fa-check"></i> Marcar como Completada</button></td>
           <ng-template #boton_completada><td><button class="btn btn-secondary" (click)="marcarComoEstado(tarea.estado, tarea.id)"><i class="fa-regular fa-clock"></i> Marcar como Pendiente</button></td></ng-template>
           <td><button class="btn btn-warning" routerLink="/editar/{{tarea.id}}"><i class="far fa-edit"></i> Editar</button></td>
@@ -35,6 +47,8 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Lista Vacía -->
   <ng-template #vacio>
     <div class="m-3 text-center">
       <h1 class="display-4">No tienes tareas con fecha límite en los próximos 7 días ahora mismo</h1>

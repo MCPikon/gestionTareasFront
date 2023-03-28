@@ -1,5 +1,7 @@
 <app-menu></app-menu>
 <div class="container">
+
+    <!-- Lista Usuarios -->
     <div *ngIf="usuarios.length > 0; else vacio">
       <h1 class="display-4 text-center m-4">Todos los Usuarios <em class="text-warning">(Administración)</em></h1>
       <table class="table table-bordered table-striped mt-2">
@@ -19,6 +21,8 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Lista Vacía -->
     <ng-template #vacio>
       <div class="m-3 text-center">
         <h1 class="display-4">No hay usuarios creados ahora mismo</h1>

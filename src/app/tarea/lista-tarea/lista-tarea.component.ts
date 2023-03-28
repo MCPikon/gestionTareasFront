@@ -31,6 +31,8 @@ export class ListaTareaComponent implements OnInit {
     this.usuarioService.getUsuarioByEmail(this.tokenService.getUserName()).subscribe({
       next: (response) => {
         this.usuario = response;
+        
+        // carga solamente las tareas del usuario del que recoge la id
         this.cargarTareas(this.usuario.id);
       },
       error: (error) => {
@@ -66,6 +68,11 @@ export class ListaTareaComponent implements OnInit {
     });
   }
 
+  /**
+   * Modifica las tareas y les asigna el estado opuesto al que tenian
+   * @param estado Estado de la tarea
+   * @param idTarea Id de la tarea
+   */
   marcarComoEstado(estado: Estado, idTarea: number) {
     if (estado === Estado.Completada) {
       this.tareaService.marcarTareaPendiente(idTarea).subscribe({
