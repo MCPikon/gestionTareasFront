@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Tarea } from '../models/tarea';
+import { Estado, Tarea } from '../models/tarea';
 import { Usuario } from '../models/usuario';
 
 @Injectable({
@@ -16,6 +16,10 @@ export class TareaService {
 
   public getAllByUsuarioId(usuarioId: number) {
     return this.http.get<Tarea[]>(this.tareaURL + `getAllByUsuarioId/${usuarioId}`);
+  }
+
+  public getAllByEstadoAndUsuarioId(estado:Estado, usuarioId: number) {
+    return this.http.get<Tarea[]>(this.tareaURL + `getAllByEstadoAndUsuarioId/${estado}/${usuarioId}`);
   }
 
   public addTarea(tarea: Tarea): Observable<any> {
@@ -32,5 +36,13 @@ export class TareaService {
 
   public updateTarea(tarea: Tarea): Observable<any> {
     return this.http.put<any>(this.tareaURL + 'updateTarea', tarea);
+  }
+
+  public marcarTareaCompletada(idTarea: number): Observable<any> {
+    return this.http.put<any>(this.tareaURL + 'marcarTareaCompletada', idTarea);
+  }
+
+  public marcarTareaPendiente(idTarea: number): Observable<any> {
+    return this.http.put<any>(this.tareaURL + 'marcarTareaPendiente', idTarea);
   }
 }

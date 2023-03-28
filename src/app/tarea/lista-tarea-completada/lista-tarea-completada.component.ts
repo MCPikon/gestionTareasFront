@@ -7,11 +7,11 @@ import { TokenService } from 'src/app/services/token.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
-  selector: 'app-lista-tarea',
-  templateUrl: './lista-tarea.component.html',
-  styleUrls: ['./lista-tarea.component.css']
+  selector: 'app-lista-tarea-completada',
+  templateUrl: './lista-tarea-completada.component.html',
+  styleUrls: ['./lista-tarea-completada.component.css']
 })
-export class ListaTareaComponent implements OnInit {
+export class ListaTareaCompletadaComponent implements OnInit {
 
   usuario: Usuario = null;
   tareas: Tarea[] = [];
@@ -40,7 +40,7 @@ export class ListaTareaComponent implements OnInit {
   }
 
   cargarTareas(usuarioId: number): void {
-    this.tareaService.getAllByUsuarioId(usuarioId).subscribe({
+    this.tareaService.getAllByEstadoAndUsuarioId(Estado.Completada, usuarioId).subscribe({
       next: (response) => {
         this.tareas = response;
       },

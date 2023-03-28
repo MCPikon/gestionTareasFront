@@ -16,6 +16,9 @@ import { NuevaTareaComponent } from './tarea/nueva-tarea/nueva-tarea.component';
 import { EditarTareaComponent } from './tarea/editar-tarea/editar-tarea.component';
 import { interceptorProvider } from './interceptors/prod-interceptor.service';
 import { DatePipe } from '@angular/common';
+import { ListaTareaCompletadaComponent } from './tarea/lista-tarea-completada/lista-tarea-completada.component';
+import { ListaTareaPendienteComponent } from './tarea/lista-tarea-pendiente/lista-tarea-pendiente.component';
+import { ListaTareaFechaComponent } from './tarea/lista-tarea-fecha/lista-tarea-fecha.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { DatePipe } from '@angular/common';
     IndexComponent,
     ListaTareaComponent,
     NuevaTareaComponent,
-    EditarTareaComponent
+    EditarTareaComponent,
+    ListaTareaCompletadaComponent,
+    ListaTareaPendienteComponent,
+    ListaTareaFechaComponent
   ],
   imports: [
     BrowserModule,

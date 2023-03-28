@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <div *ngIf="usuario" class="container">
   <div *ngIf="tareas.length > 0; else vacio">
-    <h1 class="display-4 text-center m-4">Todas las Tareas</h1>
+    <h1 class="display-4 text-center m-4">Tareas Pendientes</h1>
     <table class="table table-bordered table-striped mt-2">
       <thead>
         <tr>
@@ -39,20 +39,20 @@
   </div>
   <ng-template #vacio>
     <div class="m-3 text-center">
-      <h1 class="display-4">No tienes tareas creadas ahora mismo</h1>
+      <h1 class="display-4">No tienes tareas pendientes ahora mismo</h1>
       <img
         class="img-fluid m-3"
         src="https://cdn-icons-png.flaticon.com/512/5058/5058432.png"
         alt="img tareas vacio"
         width="300px"
       />
-      <h2 class="mt-4">Para crear tareas pulsa el botón de abajo</h2>
+      <h2 class="mt-4">Para volver al listado de tareas pulsa el botón de abajo</h2>
       <button
-        class="btn btn-success btn-lg mt-2"
-        routerLink="/nuevo"
+        class="btn btn-primary btn-lg mt-2"
+        routerLink="/lista"
         type="submit"
       >
-        <i class="fa-solid fa-circle-plus"></i> Crear Tarea
+      <i class="fas fa-arrow-alt-circle-left"></i> Volver al listado
       </button>
     </div>
   </ng-template>
