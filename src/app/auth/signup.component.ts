@@ -16,7 +16,6 @@ export class SignupComponent implements OnInit {
   nombre: string;
   email: string;
   password: string;
-  errMsg: string;
 
   constructor(
     private tokenService: TokenService,
@@ -38,8 +37,7 @@ export class SignupComponent implements OnInit {
         this.router.navigate(["/login"]);
       },
       error: (err) => {
-        this.errMsg = err.error.mensaje;
-        this.toastr.error(this.errMsg, 'Fail', {
+        this.toastr.error('Campos mal introducidos y/o email inválido o ya existente', 'Error', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
       }

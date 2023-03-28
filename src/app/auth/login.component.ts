@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   loginUsuario: LoginUsuario;
   email: string;
   password: string;
-  errMsg: string;
 
   constructor(
     private tokenService: TokenService,
@@ -34,11 +33,10 @@ export class LoginComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.tokenService.setToken(response.token);
-        this.router.navigate(["/"]);
+        this.router.navigate(["/lista-pendientes"]);
       },
       error: (err) => {
-        this.errMsg = err.error.mensaje;
-        this.toastr.error(this.errMsg, 'Fail', {
+        this.toastr.error('Email y/o Contraseña mal introducidos', 'Error', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
       }
