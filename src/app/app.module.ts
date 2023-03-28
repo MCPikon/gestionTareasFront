@@ -18,7 +18,9 @@ import { interceptorProvider } from './interceptors/prod-interceptor.service';
 import { DatePipe } from '@angular/common';
 import { ListaTareaCompletadaComponent } from './tarea/lista-tarea-completada/lista-tarea-completada.component';
 import { ListaTareaPendienteComponent } from './tarea/lista-tarea-pendiente/lista-tarea-pendiente.component';
-import { ListaTareaFechaComponent } from './tarea/lista-tarea-fecha/lista-tarea-fecha.component';
+import { ListaTareaFechaHoyComponent } from './tarea/lista-tarea-fecha-hoy/lista-tarea-fecha-hoy.component';
+import { ListaTareaFechaMesComponent } from './tarea/lista-tarea-fecha-mes/lista-tarea-fecha-mes.component';
+import { ListaTareaFechaSemanaComponent } from './tarea/lista-tarea-fecha-semana/lista-tarea-fecha-semana.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ListaTareaFechaComponent } from './tarea/lista-tarea-fecha/lista-tarea-
     EditarTareaComponent,
     ListaTareaCompletadaComponent,
     ListaTareaPendienteComponent,
-    ListaTareaFechaComponent
+    ListaTareaFechaHoyComponent,
+    ListaTareaFechaMesComponent,
+    ListaTareaFechaSemanaComponent
   ],
   imports: [
     BrowserModule,

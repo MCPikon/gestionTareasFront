@@ -18,6 +18,18 @@ export class TareaService {
     return this.http.get<Tarea[]>(this.tareaURL + `getAllByUsuarioId/${usuarioId}`);
   }
 
+  public getAllByFechaLimiteHoyAndUsuarioId(usuarioId: number) {
+    return this.http.get<Tarea[]>(this.tareaURL + `getAllByFechaLimiteHoyAndUsuarioId/${usuarioId}`);
+  }
+
+  public getAllByFechaLimiteSemanaAndUsuarioId(usuarioId: number) {
+    return this.http.get<Tarea[]>(this.tareaURL + `getAllByFechaLimiteSemanaAndUsuarioId/${usuarioId}`);
+  }
+
+  public getAllByFechaLimiteMesAndUsuarioId(usuarioId: number) {
+    return this.http.get<Tarea[]>(this.tareaURL + `getAllByFechaLimiteMesAndUsuarioId/${usuarioId}`);
+  }
+
   public getAllByEstadoAndUsuarioId(estado:Estado, usuarioId: number) {
     return this.http.get<Tarea[]>(this.tareaURL + `getAllByEstadoAndUsuarioId/${estado}/${usuarioId}`);
   }

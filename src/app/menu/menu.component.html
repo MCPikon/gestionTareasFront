@@ -15,9 +15,13 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" routerLink="/lista"><i class="fa-solid fa-list"></i> Todas</a></li>
+                <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" routerLink="/lista-completadas"><i class="fa-solid fa-check"></i> Completadas</a></li>
                 <li><a class="dropdown-item" routerLink="/lista-pendientes"><i class="fa-regular fa-clock"></i> Pendientes</a></li>
-                <li><a class="dropdown-item" routerLink="/lista-fechas"><i class="fa-regular fa-calendar"></i> Por Fecha</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" routerLink="/lista-fecha-hoy"><i class="fa-regular fa-calendar"></i> Para Hoy</a></li>
+                <li><a class="dropdown-item" routerLink="/lista-fecha-semana"><i class="fa-regular fa-calendar"></i> Próximos 7 días</a></li>
+                <li><a class="dropdown-item" routerLink="/lista-fecha-mes"><i class="fa-regular fa-calendar"></i> Próximos 30 días</a></li>
               </ul>
             </li>
             <li class="nav-item" *ngIf="isLogged">

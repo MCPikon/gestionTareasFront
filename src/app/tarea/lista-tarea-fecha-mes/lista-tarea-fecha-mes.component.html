@@ -1,0 +1,59 @@
+<app-menu></app-menu>
+<div *ngIf="usuario" class="container">
+  <div *ngIf="tareas.length > 0; else vacio">
+    <h1 class="display-4 text-center m-4">Tareas con fecha límite en los próximos 30 días</h1>
+    <table class="table table-bordered table-striped mt-2">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha de Creación</th>
+          <th scope="col">Fecha Límite</th>
+          <th class="text-center" scope="col" colspan="3">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tarea of tareas">
+          <th>{{ tarea.id }}</th>
+          <td>{{ tarea.titulo }}</td>
+          <td *ngIf="tarea.descripcion != null; else descripcion_vacia">{{ tarea.descripcion }}</td>
+          <ng-template #descripcion_vacia><td><em style="color:lightslategray">Sin Descripción</em></td></ng-template>
+          <td class="text-success" *ngIf="tarea.estado === 'Completada'; else tarea_pendiente"><b>{{ tarea.estado }}</b>&nbsp;<i class="fa-solid fa-check" style="color: #00940a;"></i></td>
+          <ng-template #tarea_pendiente><td><b>{{ tarea.estado }}</b>&nbsp;<i class="fa-regular fa-clock" style="color: #383838;"></i></td></ng-template>
+          <td>{{ tarea.fechaCreacion | date : "dd-MM-yyyy" }}</td>
+          <td *ngIf="tarea.fechaLimite != null; else fecha_limite_vacio">
+            {{ tarea.fechaLimite | date : "dd-MM-yyyy" }}
+          </td>
+          <ng-template #fecha_limite_vacio><td><em style="color:lightslategray">Sin fecha límite</em></td></ng-template>
+          <td *ngIf="tarea.estado === 'Pendiente'; else boton_completada"><button class="btn btn-success" (click)="marcarComoEstado(tarea.estado, tarea.id)"><i class="fa-solid fa-check"></i> Marcar como Completada</button></td>
+          <ng-template #boton_completada><td><button class="btn btn-secondary" (click)="marcarComoEstado(tarea.estado, tarea.id)"><i class="fa-regular fa-clock"></i> Marcar como Pendiente</button></td></ng-template>
+          <td><button class="btn btn-warning" routerLink="/editar/{{tarea.id}}"><i class="far fa-edit"></i> Editar</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="borrar(tarea.id)">
+            <i class="fa-solid fa-trash"></i> Borrar
+          </button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #vacio>
+    <div class="m-3 text-center">
+      <h1 class="display-4">No tienes tareas con fecha límite en los próximos 30 días ahora mismo</h1>
+      <img
+        class="img-fluid m-3"
+        src="https://cdn-icons-png.flaticon.com/512/5058/5058432.png"
+        alt="img tareas vacio"
+        width="300px"
+      />
+      <h2 class="mt-4">Para volver al listado de tareas pulsa el botón de abajo</h2>
+      <button
+        class="btn btn-primary btn-lg mt-2"
+        routerLink="/lista"
+        type="submit"
+      >
+      <i class="fas fa-arrow-alt-circle-left"></i> Volver al listado
+      </button>
+    </div>
+  </ng-template>
+</div>
