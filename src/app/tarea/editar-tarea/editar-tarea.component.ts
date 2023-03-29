@@ -37,6 +37,9 @@ export class EditarTareaComponent implements OnInit {
   }
 
   onUpdate() {
+    if(this.tarea.descripcion.trim() == '') {
+      this.tarea.descripcion = null;
+    }
     this.tareaService.updateTarea(this.tarea).subscribe({
       next: (response) => {
         this.toastr.success("Tarea Actualizada", 'OK', {
