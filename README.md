@@ -2,6 +2,12 @@
 
 > Esta es solamente una parte del proyecto, la parte de Backend esta en el repositorio [GestionTareasBack](https://github.com/MCPikon/gestionTareasBack)
 
+## Autor
+
+* [Javier Picón](https://github.com/MCPikon)
+
+## Descripción
+
 Proyecto Final del Curso de Agrupo Sistemas que consiste en un Frontend hecho enteramente con Angular (version 13.1.2) con varias dependencias de npm.
 
 ## Instalación
